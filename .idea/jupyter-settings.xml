@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JupyterPersistentConnectionParameters">
+    <option name="moduleParameters">
+      <map>
+        <entry key="H:/Archivos/RoTe/Trabajo/Freelance/Ubuntec/Transaccional/v3/.idea/v3.iml">
+          <value>
+            <JupyterConnectionParameters>
+              <option name="managed" value="true" />
+              <option name="sdkHomePath" value="C:\Users\Asus\anaconda3\envs\Transaccional\python.exe" />
+            </JupyterConnectionParameters>
+          </value>
+        </entry>
+        <entry key="H:/Archivos/RoTe/tesis_paquete/.idea/tesis_paquete.iml">
+          <value>
+            <JupyterConnectionParameters>
+              <option name="managed" value="true" />
+              <option name="port" value="8888" />
+            </JupyterConnectionParameters>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
