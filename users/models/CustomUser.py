@@ -1,4 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.gis.db import models
 from django.db import models
 from django.contrib.auth.models import Group
 
@@ -52,3 +54,19 @@ class GroupDetails(models.Model):
     description = models.TextField()
 
 
+class UsuarioDateTime(models.Model):
+    creado = models.DateTimeField(
+        auto_now_add=True,
+        null=False
+    )
+    actualizado = models.DateTimeField(
+        null=True
+    )
+    usuario_registro = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.RESTRICT,
+        null=False
+    )
+
+    class Meta:
+        abstract = True
