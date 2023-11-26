@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'centros_proteccion_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'centros_atencion',
+        'NAME': 'centros_atencion_django',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': '5432',
+        'PASSWORD': 'hector',
+        'HOST': 'localhost',
+        'PORT': '5433',
         'TEST':
             {
-                'NAME': 'test_centros_atencion',
+                'NAME': 'test_centros_atencion_django',
             }
     },
 }
