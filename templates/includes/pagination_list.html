@@ -1,0 +1,46 @@
+
+{% block pagination %}
+<div class="card-footer py-4">
+    <nav aria-label="...">
+        <ul class="pagination justify-content-end mb-0">
+
+            {% if page.has_other_pages %}
+
+                <li class="page-item {% if page.number == 1 %}disabled{% endif %}">
+                    <a class="page-link" href="?page=1" aria-label="Primera">
+                        <i class="fas fa-angle-double-left"></i>
+                        <span class="sr-only">Primera</span>
+                    </a>
+                </li>
+                {% if page.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page.previous_page_number }}" aria-label="Anterior">
+                        <i class="fas fa-angle-left"></i>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% for num in page.paginator.page_range %}
+                    <li class="page-item {% if num == page.number %}active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+                {% if page.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page.next_page_number }}" aria-label="Siguiente">
+                        <i class="fas fa-angle-right"></i>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </li>
+                    {% endif %}
+                <li class="page-item {% if page.number == page.paginator.num_pages %}disabled{% endif %}">
+                    <a class="page-link" href="?page={{ page.paginator.num_pages }}" aria-label="Última">
+                        <i class="fas fa-angle-double-right"></i>
+                        <span class="sr-only">Última</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}

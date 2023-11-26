@@ -7,7 +7,8 @@ from users.models.CustomUser import UsuarioDateTime
 
 
 class RepresentanteLegal(UsuarioDateTime):
-    cedula = models.CharField(max_length=50, null=False, blank=False)
+    cedula = models.CharField(max_length=50, null=False, blank=False
+                              , help_text='Cédula del representante legal')
     primer_nombre = models.CharField(max_length=50, null=False, blank=False)
     segundo_nombre = models.CharField(max_length=50, null=True, blank=True)
     primer_apellido = models.CharField(max_length=50, null=False, blank=False)

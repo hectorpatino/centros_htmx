@@ -68,5 +68,15 @@ class UsuarioDateTime(models.Model):
         null=False
     )
 
+    def save(self, *args, **kwargs):
+        if 'request' in kwargs:
+            self.usuario_registro = kwargs.pop('request').user
+        else:
+            user = None
+        if not self.usuario_registro:
+            self.usuario_registro = user
+
+        super(UsuarioDateTime, self).save(*args, **kwargs)
+
     class Meta:
         abstract = True
