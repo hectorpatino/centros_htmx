@@ -6,6 +6,7 @@ __pycache__/
 
 # C extensions
 *.so
+app/static/*
 
 # Distribution / packaging
 .Python
@@ -990,3 +991,4 @@ cython_debug/
 #.idea/
 
 !/app/
+!/requirements.txt
