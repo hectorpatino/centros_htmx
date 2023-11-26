@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
-# Create your views here.
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class IndexTemplate(generic.TemplateView):
+class IndexTemplate(LoginRequiredMixin, generic.TemplateView):
     template_name = "centros_proteccion/test.html"
+
+

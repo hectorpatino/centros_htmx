@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 
+from centros_proteccion.models.admin_bussiness import Estandarizacion
 from centros_proteccion.models.base import CentroAtencion
 from users.models.CustomUser import UsuarioDateTime
 

@@ -7,7 +7,6 @@ from users.models.CustomUser import UsuarioDateTime
 
 
 class RepresentanteLegal(UsuarioDateTime):
-    # TODO esto debe ser validado por expresiones regulares
     cedula = models.CharField(max_length=50, null=False, blank=False)
     primer_nombre = models.CharField(max_length=50, null=False, blank=False)
     segundo_nombre = models.CharField(max_length=50, null=True, blank=True)

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5s0ou7_=b7yvz1v2jwcap=&1u4ym53s$tdv#ac^=y6zwp!-u%d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'centros_proteccion'
+    'centros_proteccion',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +78,17 @@ WSGI_APPLICATION = 'centros_proteccion_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'centros_atencion',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
+        'TEST':
+            {
+                'NAME': 'test_centros_atencion',
+            }
+    },
 }
 
 
@@ -117,7 +125,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
+STATIC_ROOT = f'app/static/'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -129,3 +137,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+LOGIN_REDIRECT_URL = '/'

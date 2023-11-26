@@ -22,7 +22,7 @@ class Red(models.Model):
 
 class Municipio(models.Model):
     nombre = models.CharField(max_length=50)
-    provicia = models.ForeignKey(Provincia, related_name='municipios',
+    provincia = models.ForeignKey(Provincia, related_name='municipios',
                                  on_delete=models.RESTRICT, null=True)
     codigo = models.CharField(max_length=5)
     geom = models.MultiPolygonField(srid=4326, null=True)
@@ -37,4 +37,4 @@ class Municipio(models.Model):
         verbose_name_plural = 'municipios'
 
     def __str__(self):
-        return f'{self.nombre} - {self.provicia}'
+        return f'{self.nombre} - {self.provincia}'

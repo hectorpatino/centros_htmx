@@ -29,8 +29,18 @@
                 {% endif %}  
 
               </div>
+                {% if form.errors %}
+                <p>Su nombre de usuario y contraseña no coinciden. Intente de nuevo. </p>
+                {% endif %}
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <p> Su cuenta no tiene acceso a esta página. </p>
+                    {% else %}
+                        <p> Por favor, ingrese con su nombre de usuario y contraseña para ver esta página. </p>
+                    {% endif %}
+                {% endif %}
 
-              <form method="POST">
+              <form method="POST" action="{% url 'login' %}">
 
                 {% csrf_token %}
 
@@ -58,7 +68,9 @@
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Ingresar</button>
+
                 </div>
+                    <input type="hidden" name="next" value={{ next }}/>
               </form>
             </div>
           </div>

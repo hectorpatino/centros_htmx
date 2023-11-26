@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    build: .
+
+    command: ["sh", "./start.sh"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      - POSTGRES_DB=centros_atencion
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+    postgres_data:
