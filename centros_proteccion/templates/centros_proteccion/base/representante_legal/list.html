@@ -34,7 +34,8 @@
                   <th scope="col" class="sort" data-sort="primer_apellido">Primer Apellido</th>
                   <th scope="col" class="sort" data-sort="telefono">Telefono</th>
                   <th scope="col" class="sort" data-sort="celular">Celular</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col" class="sort" data-sort="correo">Correo</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody class="list">
@@ -57,6 +58,9 @@
                       <td class="budget">
                           {{ representante_legal.celular }}
                       </td>
+                        <td class="budget">
+                          {{ representante_legal.correo }}
+                      </td>
 
                       <td class="text-right">
                         <div class="dropdown">
@@ -64,8 +68,8 @@
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Ver Detalles</a>
-                            <a class="dropdown-item" href="#">Actualizar</a>
+                            <a class="dropdown-item" href="{% url 'representante_legal_detail' pk=representante_legal.pk%}">Ver Detalles</a>
+                            <a class="dropdown-item" href="{% url 'representante_legal_update' pk=representante_legal.pk %}">Actualizar</a>
                             <a class="dropdown-item" href="#">Borrar</a>
                           </div>
                         </div>
