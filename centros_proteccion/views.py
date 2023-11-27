@@ -71,3 +71,10 @@ class RepresentanteLegalDetailView(NoGuardarCacheMixin, LoginRequiredMixin, gene
         context['razones_sociales'] = self.object.razon_social.count()
         return context
 
+
+class RepresentanteLegalDeleteView(NoGuardarCacheMixin, LoginRequiredMixin, generic.DeleteView):
+    model = RepresentanteLegal
+    template_name = 'centros_proteccion/base/representante_legal/confirm_delete.html'
+    permission_required = 'centros_proteccion.eliminar_representante_legal'
+    success_url = reverse_lazy('representante_legal_list')
+

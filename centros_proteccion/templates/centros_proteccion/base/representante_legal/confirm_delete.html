@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends "layouts/base.html" %}
+{% block content %}
+    <div class="card-body">
+<form method="post">
+  {% csrf_token %}
+  <p>Está seguro de que quiere borrar el registro del representante legal {{ object.primer_apellido }} {{ object.segundo_apellido }}
+      {{ object.primer_nombre}} {{ object.primer_apellido }} con cédula {{ object.cedula }} ?</p>
+  <div>
+    <input class="btn btn-danger" value="Borrar" type="submit">
+  </div>
+</form>
+</div>
+{% endblock %}

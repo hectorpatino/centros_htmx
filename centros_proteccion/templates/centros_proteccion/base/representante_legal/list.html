@@ -70,7 +70,7 @@
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <a class="dropdown-item" href="{% url 'representante_legal_detail' pk=representante_legal.pk%}">Ver Detalles</a>
                             <a class="dropdown-item" href="{% url 'representante_legal_update' pk=representante_legal.pk %}">Actualizar</a>
-                            <a class="dropdown-item" href="#">Borrar</a>
+                            <a class="dropdown-item" href="{% url 'representante_legal_delete' pk=representante_legal.pk %}">Borrar</a>
                           </div>
                         </div>
                       </td>
