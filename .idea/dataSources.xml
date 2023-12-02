@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="db driver - db.sqlite3" uuid="771965ea-81eb-4860-ad74-ce786f907cb2">
-      <driver-ref>bc24b892-f231-40ef-be86-5fc83fb58b57</driver-ref>
+    <data-source source="LOCAL" name="centros_atencion_django@localhost [2]" uuid="15d1923b-8cd6-44a2-a316-cb9802c1371e">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Asus\Desktop\BASURA\centros_proteccion_django\db.sqlite3</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5433/centros_atencion_django</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

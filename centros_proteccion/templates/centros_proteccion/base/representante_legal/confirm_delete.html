@@ -5,7 +5,7 @@
 <form method="post">
   {% csrf_token %}
   <p>Está seguro de que quiere borrar el registro del representante legal {{ object.primer_apellido }} {{ object.segundo_apellido }}
-      {{ object.primer_nombre}} {{ object.primer_apellido }} con cédula {{ object.cedula }} ?</p>
+      {{ object.primer_nombre}} {{ object.segundo_nombre }} con cédula {{ object.cedula }} ?</p>
   <div>
     <input class="btn btn-danger" value="Borrar" type="submit">
   </div>

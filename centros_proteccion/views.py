@@ -35,12 +35,15 @@ class NoGuardarCacheMixin:
 
 
 @method_decorator(never_cache, name='dispatch')
-class RepresentanteLegalCreateView(NoGuardarCacheMixin, UsuarioCrearRegistroMixin, LoginRequiredMixin, generic.CreateView):
-    model = RepresentanteLegal
+class RepresentanteLegalCreateView(NoGuardarCacheMixin, UsuarioCrearRegistroMixin, LoginRequiredMixin, generic.FormView):
     form_class = RepresentanteLegalForm
-    template_name = 'centros_proteccion/base/representante_legal/create.html'
+    template_name = 'centros_proteccion/base/representante_legal/form.html'
     permission_required = 'centros_proteccion.crear_representante_legal'
     success_url = reverse_lazy('representante_legal_list')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class RepresentanteLegalListView(NoGuardarCacheMixin, LoginRequiredMixin, generic.ListView):
@@ -54,9 +57,10 @@ class RepresentanteLegalListView(NoGuardarCacheMixin, LoginRequiredMixin, generi
 class RepresentanteLegalUpdateView(NoGuardarCacheMixin, UsuarioActualizarRegistroMixin, LoginRequiredMixin, generic.UpdateView):
     model = RepresentanteLegal
     form_class = RepresentanteLegalForm
-    template_name = 'centros_proteccion/base/representante_legal/update.html'
+    template_name = 'centros_proteccion/base/representante_legal/form.html'
     permission_required = 'centros_proteccion.modificar_representante_legal'
     success_url = reverse_lazy('representante_legal_list')
+
 
 
 class RepresentanteLegalDetailView(NoGuardarCacheMixin, LoginRequiredMixin, generic.DetailView):
