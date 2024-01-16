@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'centros_proteccion',
+    'crispy_forms',
+    'django.contrib.gis',
+    'crispy_bootstrap4',
+    'django_extensions',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -124,8 +129,9 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+# Implementación en producción con collectstatic copia lo de `STATICFILES_DIRS` a `STATIC_ROOT`
 STATIC_ROOT = f'app/static/'
+# Cuando las plantillas hacen refecia bucna http://dominio/static/style.css
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -140,3 +146,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+

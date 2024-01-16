@@ -5,11 +5,14 @@ from centros_proteccion.models.dominios import DTipoPersona, DModalidad, DArea, 
 from centros_proteccion.models.espaciales import Municipio
 from users.models.CustomUser import UsuarioDateTime
 
+from django.db import models
+
 
 class RepresentanteLegal(UsuarioDateTime):
     cedula = models.CharField(max_length=50, null=False, blank=False
                               , help_text='Cédula del representante legal')
-    primer_nombre = models.CharField(max_length=50, null=False, blank=False)
+    primer_nombre = models.CharField(max_length=50, null=False, blank=False,
+                                     help_text='Primer nombre del representante legal')
     segundo_nombre = models.CharField(max_length=50, null=True, blank=True)
     primer_apellido = models.CharField(max_length=50, null=False, blank=False)
     segundo_apellido = models.CharField(max_length=50, null=True, blank=True)

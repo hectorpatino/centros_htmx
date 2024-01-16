@@ -2,11 +2,17 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
+from django_filters.views import FilterView
+
 from centros_proteccion.forms.base import RepresentanteLegalForm
 from centros_proteccion.models import RepresentanteLegal
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from .filters import RepresentanteLegalFilter
+
+from django.views.generic import TemplateView
+
 
 def custom_404(request, exception):
     return render(request, 'home/page-404.html', status=404)
@@ -35,23 +41,16 @@ class NoGuardarCacheMixin:
 
 
 @method_decorator(never_cache, name='dispatch')
-class RepresentanteLegalCreateView(NoGuardarCacheMixin, UsuarioCrearRegistroMixin, LoginRequiredMixin, generic.FormView):
+class RepresentanteLegalCreateView(NoGuardarCacheMixin, UsuarioCrearRegistroMixin, LoginRequiredMixin, generic.CreateView):
     form_class = RepresentanteLegalForm
     template_name = 'centros_proteccion/base/representante_legal/form.html'
     permission_required = 'centros_proteccion.crear_representante_legal'
     success_url = reverse_lazy('representante_legal_list')
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
-
-class RepresentanteLegalListView(NoGuardarCacheMixin, LoginRequiredMixin, generic.ListView):
-    model = RepresentanteLegal
-    template_name = 'centros_proteccion/base/representante_legal/list.html'
-    permission_required = 'centros_proteccion.ver_representante_legal'
-    context_object_name = 'representantes_legales'
-    paginate_by = 5
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super().get_form_kwargs()
+        kwargs['is_add'] = True
+        return kwargs
 
 
 class RepresentanteLegalUpdateView(NoGuardarCacheMixin, UsuarioActualizarRegistroMixin, LoginRequiredMixin, generic.UpdateView):
@@ -60,6 +59,20 @@ class RepresentanteLegalUpdateView(NoGuardarCacheMixin, UsuarioActualizarRegistr
     template_name = 'centros_proteccion/base/representante_legal/form.html'
     permission_required = 'centros_proteccion.modificar_representante_legal'
     success_url = reverse_lazy('representante_legal_list')
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super().get_form_kwargs()
+        kwargs['is_add'] = False
+        return kwargs
+
+
+class RepresentanteLegalListView(NoGuardarCacheMixin, LoginRequiredMixin, FilterView):
+    model = RepresentanteLegal
+    template_name = 'centros_proteccion/base/representante_legal/list.html'
+    permission_required = 'centros_proteccion.ver_representante_legal'
+    context_object_name = 'representantes_legales'
+    paginate_by = 5
+    filterset_class = RepresentanteLegalFilter
 
 
 

@@ -1,87 +1,13 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
+{% crispy representante_legal_form.helper %}
+
 {% block content %}
     <div class="card-body">
 
-      <form method="post" enctype="multipart/form-data" action="{% url 'representante_legal_create' %}">
-          {% csrf_token %}
-          {{ form.errors }}
-        <h6 class="heading-small text-muted mb-4">Información del representante Legal</h6>
-        <div class="pl-lg-4">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                   <div class="form-group">
-                    <label class="form-control-label" for="{{ form.cedula.id_for_label }}">Cédula</label>
-                    <input type="text" id="{{ form.cedula.id_for_label }}" name="{{ form.cedula.name}}"  class="form-control" value="{{ form.cedula.value|default:'' }}">
-                </div>
-              </div>
-            </div>
-          </div>
-        <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                   <label class="form-control-label" for="{{ form.primer_nombre.id_for_label }}">Primer Nombre</label>
-                    <input type="text" id="{{ form.primer_nombre.id_for_label }}" name="{{ form.primer_nombre.name}}"  class="form-control" value="{{ form.primer_nombre.value|default:'' }}">
-              </div>
-            </div>
-              <div class="col-lg-6">
-              <div class="form-group">
-                   <label class="form-control-label" for="{{ form.segundo_nombre.id_for_label }}">Segundo Nombre</label>
-                    <input type="text" id="{{ form.segundo_nombre.id_for_label }}" name="{{ form.segundo_nombre.name}}"  class="form-control" value="{{ form.segundo_nombre.value|default:'' }}">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                  <label class="form-control-label" for="{{ form.primer_apellido.id_for_label }}">Primer Apellido</label>
-                  <input type="text" id="{{ form.primer_apellido.id_for_label }}" name="{{ form.primer_apellido.name}}"  class="form-control" value="{{ form.primer_apellido.value|default:'' }}" >
-              </div>
-            </div>
+      {% crispy form %}
 
-            <div class="col-lg-6">
-              <div class="form-group">
-                  <label class="form-control-label" for="{{ form.segundo_apellido.id_for_label }}">Segundo Apellido</label>
-                  <input type="text" id="{{ form.segundo_apellido.id_for_label }}" name="{{ form.segundo_apellido.name}}"  class="form-control" value="{{ form.segundo_apellido.value|default:'' }}" >
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="my-4" />
-        <!-- Address -->
-        <h6 class="heading-small text-muted mb-4">Información de contacto</h6>
-        <div class="pl-lg-4">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                  <label class="form-control-label" for="{{ form.correo.id_for_label }}">Correo</label>
-                  <input type="email" id="{{ form.correo.id_for_label }}" name="{{ form.correo.name}}"  class="form-control" value="{{ form.correo.value|default:'' }}" >
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="form-group">
-                  <label class="form-control-label" for="{{ form.telefono.id_for_label }}">Telefono</label>
-                  <input type="number" id="{{ form.telefono.id_for_label }}" name="{{ form.telefono.name}}"  class="form-control" value="{{ form.telefono.value|default:'' }}">
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="form-group">
-                  <label class="form-control-label" for="{{ form.celular.id_for_label }}">Celular</label>
-                  <input type="number" id="{{ form.celular.id_for_label }}" name="{{ form.celular.name}}"  class="form-control" >
 
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="form-group">
-                   <label class="form-control-label" for="{{ form.muni_residencia.id_for_label }}">Municipio de Residencia</label>
-                    {{ form.muni_residencia }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
     </div>
 {% endblock %}
